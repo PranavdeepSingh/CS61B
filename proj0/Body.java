@@ -7,6 +7,7 @@ public class Body{
 	public String imgFileName;
 	public double netForceX ;
 	public double netForceY ;
+	public String imgToDraw = new String();
 
 	public Body(double xP, double yP, double xV,double yV,double m,String img){
 		xxPos = xP;
@@ -101,14 +102,20 @@ public class Body{
 	
 	public void update(double dt,double fX,double fY){
 
-		double aX = (fX/this.mass);
-		double aY = (fY/this.mass);
+		double aX ;
+		aX = (fX/this.mass);
+		double aY;
+		aY = (fY/this.mass);
 		xxVel = xxVel + aX*dt;
 		yyVel = yyVel + aY*dt;
 		xxPos = xxPos + xxVel*dt;
 		yyPos = yyPos + yyVel*dt;
 
 
+	}
+	public void draw(){
+		imgToDraw = "images/" + this.imgFileName;
+		StdDraw.picture(this.xxPos,this.yyPos,this.imgToDraw);
 	}
 
 }
